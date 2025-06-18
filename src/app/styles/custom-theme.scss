@@ -1,0 +1,32 @@
+@use '@angular/material' as mat;
+
+// Define custom primary and secondary color palettes
+$app-primary: mat.define-light-color-palette((
+  primary: #6200ee,         // Main color
+  on-primary: #ffffff,      // Text color on primary
+  primary-container: #bb86fc,
+  on-primary-container: #6200ee,
+));
+
+$app-accent: mat.define-light-color-palette((
+  secondary: #03dac5,         // Secondary color
+  on-secondary: #000000,      // Text color on secondary
+  secondary-container: #018786,
+  on-secondary-container: #ffffff,
+));
+
+// Define the overall theme (light or dark)
+$app-theme: mat.define-light-theme((
+  color: (
+    primary: $app-primary,
+    secondary: $app-accent,
+    surface: mat.$material-light-surface, // Defaults
+    background: mat.$material-light-background,
+    error: mat.$material-light-error,
+  ),
+  typography: mat.define-typography-config(), // Optional typography
+  density: 0, // Optional density scaling (default is 0)
+));
+
+// Apply the theme to Material components
+@include mat.all-component-themes($app-theme);
